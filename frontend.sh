@@ -1,6 +1,6 @@
 set-hostname frontend
 yum install -y bash-completion
-yum install nginx
+yum install -y nginx
 systemctl start nginx
 systemctl enable nginx
 rm -rf /usr/share/nginx/html/*
