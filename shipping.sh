@@ -1,7 +1,7 @@
 # Change the hostname
 #hostnamectl set-hostname shipping
 # Put  sleep for 5S so hostname fully propagate before running the next script.
-#sleep 5
+# sleep 5
 
 #Shipping service is responsible for finding the distance of the package to be shipped and calculate the price based on that.
 #Shipping service is written in Java, Hence we need to install Java.
