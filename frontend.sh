@@ -1,4 +1,4 @@
-set-hostname frontend
+hostnamectl set-hostname frontend
 sleep 10
 yum install -y nginx bash-completion
 systemctl start nginx
