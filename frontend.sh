@@ -9,4 +9,5 @@ unzip -o /tmp/frontend.zip -d /usr/share/nginx/html/
 systemctl restart nginx
 
 # Repo URL "https://github.com/abhijeet4022/roboshop-shell.git"
+exec bash
 
