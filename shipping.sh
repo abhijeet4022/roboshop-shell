@@ -18,7 +18,7 @@ mkdir /app
 curl -L -o /tmp/shipping.zip https://roboshop-artifacts.s3.amazonaws.com/shipping.zip
 unzip -o /tmp/shipping.zip -d /app/
 
-#Every application is developed by development team will have some common softwares that they use as libraries.
+#Every application is developed by development team will have some common software's that they use as libraries.
 # This application also have the same way of defined dependencies in the application configuration.
 #Lets download the dependencies & build the application
 mvn clean package -f /app/pom.xml
