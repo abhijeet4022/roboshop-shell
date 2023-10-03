@@ -37,7 +37,7 @@ systemctl start shipping
 
 # For this application to work fully functional we need to load schema to the Database.
 # To load schema we need to install mysql client.
-#To have it installed we can use
+# To have it installed we can use
 
 dnf install mysql -y
 mysql -h <MYSQL-SERVER-IPADDRESS> -uroot -pRoboShop@1 </app/schema/shipping.sql
