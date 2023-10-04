@@ -5,7 +5,7 @@
 
 #Developer has chosen GoLang, Check with developer which version of GoLang is needed.
 #Install GoLang
-dnf install golang -y
+dnf install bash-completion golang -y
 
 #Add application User
 useradd roboshop

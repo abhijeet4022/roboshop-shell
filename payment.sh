@@ -5,7 +5,7 @@
 
 # Developer has chosen Python, Check with developer which version of Python is needed.
 # Install Python 3.6
-dnf install python36 gcc python3-devel -y
+dnf install python36 gcc python3-devel bash-completion -y
 
 #Lets setup an app directory.
 mkdir /app

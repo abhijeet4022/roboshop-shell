@@ -8,7 +8,7 @@
 #Maven is a build or Java Packaging software, Hence we are going to install maven, This indeed takes care of java installation.
 #Developer has chosen Maven, Check with developer which version of Maven is needed. Here for our requirement java >= 1.8 & maven >=3.5 should work.
 
-dnf install maven -y
+dnf install maven bash-completion -y
 
 #We keep application in one standard location. This is a usual practice that runs in the organization.
 #Lets setup an app directory.
