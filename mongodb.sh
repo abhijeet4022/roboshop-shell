@@ -9,7 +9,7 @@
 cp mongo.repo /etc/yum.repos.d/mongo.repo
 
 #Install MongoDB
-yum install -y mongo-org bash-completion
+yum install -y mongodb-org bash-completion
 
 #Start & Enable MongoDB Service
 systemctl start mongod
