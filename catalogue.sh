@@ -42,7 +42,7 @@ cp mongo.repo /etc/yum.repos.d/mongo.repo
 dnf install mongodb-org-shell -y
 
 #Load Schema
-#mongo --host MONGODB-SERVER-IPADDRESS </app/schema/catalogue.js
+mongo --host mongodb.learntechnology.tech </app/schema/catalogue.js
 
 #Need to update catalogue server ip address in frontend configuration.
 # Configuration file is /etc/nginx/default.d/roboshop.conf

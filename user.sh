@@ -31,6 +31,7 @@ cp user.service /etc/systemd/system/user.service
 #This command is because we added a new service, We are telling systemd to reload so it will detect new service.
 systemctl daemon-reload
 
+
 # Start & Enable the service.
 systemctl enable user
 systemctl restart user
@@ -43,7 +44,7 @@ cp mongo.repo /etc/yum.repos.d/mongo.repo
 dnf install mongodb-org-shell -y
 
 #Load Schema
-mongo --host MONGODB-SERVER-IPADDRESS </app/schema/user.js
+mongo --host mongodb.learntechnology.tech </app/schema/user.js
 
 #Need to update user server ip address in frontend configuration.
 # Configuration file is /etc/nginx/default.d/roboshop.conf

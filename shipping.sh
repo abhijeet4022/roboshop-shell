@@ -40,7 +40,7 @@ systemctl start shipping
 # To have it installed we can use
 
 dnf install mysql -y
-mysql -h <MYSQL-SERVER-IPADDRESS> -uroot -pRoboShop@1 </app/schema/shipping.sql
+mysql -h mysql.learntechnology.tech -uroot -pRoboShop@1 </app/schema/shipping.sql
 
 # Restart the service to apply the changes.
 systemctl restart shipping

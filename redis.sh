@@ -12,8 +12,10 @@ dnf install redis -y
 #is hosted on this server only. However, we need to access this service to be accessed by another server, So we need to
 #change the config accordingly.
 #Update listen address from 127.0.0.1 to 0.0.0.0 in /etc/redis.conf & /etc/redis/redis.conf
+sed -i 's/127.0.0.1/0.0.0.0/' /etc/redis.conf /etc/redis/redis.conf
 
 
 #Start & Enable Redis Service
 systemctl enable redis
 systemctl restart redis
+

@@ -11,10 +11,12 @@ cp mongo.repo /etc/yum.repos.d/mongo.repo
 #Install MongoDB
 yum install -y mongo-org bash-completion
 
-#Update listen address from 127.0.0.1 to 0.0.0.0
 #Start & Enable MongoDB Service
 systemctl start mongod
 systemctl enable mongod
+
+#Update listen address from 127.0.0.1 to 0.0.0.0
+sed -i 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
 
 
 #Usually MongoDB opens the port only to localhost(127.0.0.1), meaning this service can be accessed by the application
