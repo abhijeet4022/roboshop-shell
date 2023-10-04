@@ -32,3 +32,5 @@ systemctl restart mongod
 
 #exec bash
 
+echo "-----------Script Run Successfully-----------"
+
