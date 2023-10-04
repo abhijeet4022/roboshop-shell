@@ -12,3 +12,5 @@ systemctl restart nginx
 # Repo URL "https://github.com/abhijeet4022/roboshop-shell.git"
 #exec bash
 
+echo "-----------Script Run Successfully-----------"
+

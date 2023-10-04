@@ -31,4 +31,6 @@ systemctl daemon-reload
 
 #Start the service.
 systemctl enable payment
-systemctl start payment
+systemctl restart payment
+
+echo "-----------Script Run Successfully-----------"

@@ -34,4 +34,6 @@ systemctl daemon-reload
 
 #Start the service.
 systemctl enable dispatch
-systemctl start dispatch
+systemctl restart dispatch
+
+echo "-----------Script Run Successfully-----------"

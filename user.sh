@@ -50,3 +50,5 @@ mongo --host mongodb.learntechnology.tech </app/schema/user.js
 # Configuration file is /etc/nginx/default.d/roboshop.conf
 
 #exec bash
+
+echo "-----------Script Run Successfully-----------"

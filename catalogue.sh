@@ -1,7 +1,7 @@
 # Change the hostname
-hostnamectl set-hostname catalogue
+#hostnamectl set-hostname catalogue
 # Put  sleep for 5S so hostname fully propagate before running the next script.
-sleep 5
+#sleep 5
 
 # Configuring repo to download nodejs NodeJS>=18
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash
@@ -47,4 +47,6 @@ mongo --host mongodb.learntechnology.tech </app/schema/catalogue.js
 #Need to update catalogue server ip address in frontend configuration.
 # Configuration file is /etc/nginx/default.d/roboshop.conf
 
-exec bash
+#exec bash
+
+echo "-----------Script Run Successfully-----------"

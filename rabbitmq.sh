@@ -20,3 +20,5 @@ systemctl restart rabbitmq-server
 # Hence, we need to create one user for the application.
 rabbitmqctl add_user roboshop roboshop123
 rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
+
+echo "-----------Script Run Successfully-----------"

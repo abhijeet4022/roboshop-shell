@@ -41,3 +41,5 @@ systemctl restart cart
 # Configuration file is /etc/nginx/default.d/roboshop.conf
 
 #exec bash
+
+echo "-----------Script Run Successfully-----------"

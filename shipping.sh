@@ -44,3 +44,5 @@ mysql -h mysql.learntechnology.tech -uroot -pRoboShop@1 </app/schema/shipping.sq
 
 # Restart the service to apply the changes.
 systemctl restart shipping
+
+echo "-----------Script Run Successfully-----------"
