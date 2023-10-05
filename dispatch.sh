@@ -1,3 +1,7 @@
+#We need to setup a new service in systemd so systemctl can manage this service
+#Setup SystemD Payment Service
+cp dispatch.service /etc/systemd/system/dispatch.service
+
 # Change the hostname
 #hostnamectl set-hostname dispatch
 # Put  sleep for 5S so hostname fully propagate before running the next script.
@@ -17,17 +21,14 @@ mkdir /app
 curl -L -o /tmp/dispatch.zip https://roboshop-artifacts.s3.amazonaws.com/dispatch.zip
 unzip -o /tmp/dispatch.zip -d /app/
 
-#Every application is developed by development team will have some common softwares that they use as libraries.
+#Every application is developed by development team will have some common software's that they use as libraries.
 # This application also have the same way of defined dependencies in the application configuration.
 #Lets download the dependencies & build the software.
-go mod init dispatch -d /app/
-go get -d /app/
-go build /app/
 
-
-#We need to setup a new service in systemd so systemctl can manage this service
-#Setup SystemD Payment Service
-cp dispatch.service /etc/systemd/system/dispatch.service
+cd /app || return # From outside we can't run these command so need to navigate to that directory
+go mod init dispatch    #dispatch is the module name we can change it but we have to modify in config file also
+go get
+go build
 
 #Load the service.
 systemctl daemon-reload
