@@ -24,6 +24,9 @@ unzip -o /tmp/shipping.zip -d /app/
 mvn clean package -f /app/pom.xml
 mv /app/target/shipping-1.0.jar /app/shipping.jar
 
+# Create application user
+useradd roboshop
+
 #We need to setup a new service in systemd so systemctl can manage this service
 # Setup SystemD Shipping Service
 cp shipping.service /etc/systemd/system/shipping.service
