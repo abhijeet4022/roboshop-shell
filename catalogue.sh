@@ -1,3 +1,8 @@
+# We need to setup a service in systemd so systemctl can manage this service.
+# Setup SystemD Catalogue Service.
+# Ensure you replace <MONGODB-SERVER-IPADDRESS> with IP address
+cp catalogue.service /etc/systemd/system/catalogue.service
+
 # Change the hostname
 #hostnamectl set-hostname catalogue
 # Put  sleep for 5S so hostname fully propagate before running the next script.
