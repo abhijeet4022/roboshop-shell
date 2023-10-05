@@ -26,6 +26,7 @@ unzip -o /tmp/dispatch.zip -d /app/
 #Lets download the dependencies & build the software.
 
 cd /app || return # From outside we can't run these command so need to navigate to that directory
+# if first command fail then it will exit || means or operator
 go mod init dispatch    #dispatch is the module name we can change it but we have to modify in config file also
 go get
 go build
