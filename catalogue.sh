@@ -1,7 +1,7 @@
 # We need to setup a service in systemd so systemctl can manage this service.
 # Setup SystemD Catalogue Service.
 # Ensure you replace <MONGODB-SERVER-IPADDRESS> with IP address
-echo -e "/e[32mCopying The Catalogue.service to /etc/systemd/system/catalogue.service/e[0m"
+echo -e "\e[32mCopying The Catalogue.service to /etc/systemd/system/catalogue.service\e[0m"
 cp catalogue.service /etc/systemd/system/catalogue.service
 
 # Change the hostname
@@ -10,7 +10,7 @@ cp catalogue.service /etc/systemd/system/catalogue.service
 #sleep 5
 
 # Configuring repo to download nodejs NodeJS>=18
-echo -e "/e[32mCopying The Catalogue.service to /etc/systemd/system/catalogue.service/e[0m"
+echo -e "\e[32mCopying The Catalogue.service to /etc/systemd/system/catalogue.service\e[0m"
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash
 yum install -y bash-completion nodejs
 
