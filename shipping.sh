@@ -1,3 +1,7 @@
+#We need to setup a new service in systemd so systemctl can manage this service
+# Setup SystemD Shipping Service
+cp shipping.service /etc/systemd/system/shipping.service
+
 # Change the hostname
 #hostnamectl set-hostname shipping
 # Put  sleep for 5S so hostname fully propagate before running the next script.
@@ -27,9 +31,6 @@ mv /app/target/shipping-1.0.jar /app/shipping.jar
 # Create application user
 useradd roboshop
 
-#We need to setup a new service in systemd so systemctl can manage this service
-# Setup SystemD Shipping Service
-cp shipping.service /etc/systemd/system/shipping.service
 
 #Load the service.
 systemctl daemon-reload
