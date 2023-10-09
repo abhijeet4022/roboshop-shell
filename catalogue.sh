@@ -8,9 +8,9 @@ rm -rf /etc/systemd/system/catalogue.service &>> ${log}
 echo -e "\e[34mCopying The Catalogue.service to /etc/systemd/system/catalogue.service.\e[0m" | tee -a ${log}
 cp catalogue.service /etc/systemd/system/catalogue.service  &>> ${log}
 
-# Change the hostname
+#Change the hostname
 #hostnamectl set-hostname catalogue
-# Put  sleep for 5S so hostname fully propagate before running the next script.
+#Put  sleep for 5S so hostname fully propagate before running the next script.
 #sleep 5
 
 # Configuring repo to download nodejs NodeJS>=18
