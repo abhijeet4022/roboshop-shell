@@ -13,7 +13,7 @@ cp catalogue.service /etc/systemd/system/catalogue.service  &>> /tmp/roboshop.lo
 #sleep 5
 
 # Configuring repo to download nodejs NodeJS>=18
-echo -e "\e[34mConfiguring the repo for NodeJS.\e[0m" | tee -a /tmp/roboshop.log  | tee -a /tmp/roboshop.log
+echo -e "\e[34mConfiguring the repo for NodeJS.\e[0m" | tee -a /tmp/roboshop.log
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash  &>> /tmp/roboshop.log
 
 echo -e "\e[34mInstalling NodeJS & bash-completion package.\e[0m" | tee -a /tmp/roboshop.log
