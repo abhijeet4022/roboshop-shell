@@ -51,7 +51,7 @@ systemctl daemon-reload  &>> /tmp/roboshop.log
 
 # Start & Enable the service.
 systemctl enable catalogue  &>> /tmp/roboshop.log
-systemctl restart catalogue  &>> /tmp/roboshop.log
+systemctl start catalogue  &>> /tmp/roboshop.log
 
 #For the application to work fully functional we need to load schema to the Database.
 #Schemas are usually part of application code and developer will provide them as part of development.
@@ -72,5 +72,8 @@ mongo --host mongodb.learntechnology.tech </app/schema/catalogue.js  &>> /tmp/ro
 # Configuration file is /etc/nginx/default.d/roboshop.conf
 
 #exec bash
+# Restart the service.
+echo -e "\e[34mRestarting the catalogue service.\e[0m" | tee -a /tmp/roboshop.log
+systemctl restart catalogue  &>> /tmp/roboshop.log
 
 echo -e "\e[34m-----------Script Run Successfully-----------\e[0m" | tee -a /tmp/roboshop.log
