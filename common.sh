@@ -1,5 +1,5 @@
 # Log Variable.
-  log=/tmp/roboshop.log
+    log=/tmp/roboshop.log
 
 
 func_appprerequisite(){
@@ -105,10 +105,10 @@ func_java(){
   #We need to setup a new service in systemd so systemctl can manage this service
   # Setup SystemD Shipping Service
   echo -e "\e[34mDeleting The old service file  /etc/systemd/system/$component.service file.\e[0m" | tee -a ${log}
-  rm -rf /etc/systemd/system/$component.service  &>> $(log)
+  rm -rf /etc/systemd/system/$component.service  &>> ${log}
 
   echo -e "\e[34mCopying The $component.service to /etc/systemd/system/$component.service.\e[0m" | tee -a ${log}
-  cp $component.service /etc/systemd/system/$component.service  &>> $(log)
+  cp $component.service /etc/systemd/system/$component.service  &>> ${log}
 
   # Change the hostname
   #hostnamectl set-hostname shipping
@@ -121,7 +121,7 @@ func_java(){
   #Developer has chosen Maven, Check with developer which version of Maven is needed. Here for our requirement java >= 1.8 & maven >=3.5 should work.
 
   echo -e "\e[34mInstall the MAVAN package.\e[0m" | tee -a ${log}
-  dnf install maven bash-completion -y  &>> $(log)
+  dnf install maven bash-completion -y  &>> ${log}
 
   #Calling the function.
   echo -e "\e[34mCalling the func_appprerequisite function.\e[0m" | tee -a ${log}
@@ -131,18 +131,18 @@ func_java(){
   # This application also have the same way of defined dependencies in the application configuration.
   #Lets download the dependencies & build the application
   echo -e "\e[34mBuilding the $component service.\e[0m" | tee -a ${log}
-  mvn clean package -f /app/pom.xml  &>> $(log)
-  mv /app/target/$component-1.0.jar /app/$component.jar  &>> $(log)
+  mvn clean package -f /app/pom.xml  &>> ${log}
+  mv /app/target/$component-1.0.jar /app/$component.jar  &>> ${log}
 
 
   # For this application to work fully functional we need to load schema to the Database.
   # To load schema we need to install mysql client.
   # To have it installed we can use
   echo -e "\e[34mInstalling the MYSQL client.\e[0m" | tee -a ${log}
-  dnf install mysql -y   &>> $(log)
+  dnf install mysql -y   &>> ${log}
 
   echo -e "\e[34mLoading the schema.\e[0m" | tee -a ${log}
-  mysql -h mysql.learntechnology.tech -uroot -pRoboShop@1 </app/schema/$component.sql   &>> $(log)
+  mysql -h mysql.learntechnology.tech -uroot -pRoboShop@1 </app/schema/$component.sql   &>> ${log}
 
   # Calling the function
   echo -e "\e[34mCalling the func_systemd function.\e[0m" | tee -a ${log}
