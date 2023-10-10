@@ -3,6 +3,14 @@
 
 
 func_appprerequisite(){
+    #We need to setup a new service in systemd so systemctl can manage this service
+    # Setup SystemD Shipping Service
+    echo -e "\e[34m-->> Deleting The old service /etc/systemd/system/$component.service file.\e[0m" | tee -a ${log}
+    rm -rf /etc/systemd/system/$component.service  &>> ${log}
+
+    echo -e "\e[34m-->> Copying The $component.service to /etc/systemd/system/$component.service.\e[0m" | tee -a ${log}
+    cp $component.service /etc/systemd/system/$component.service  &>> ${log}
+
     # Add application user
     echo -e "\e[34m-->> Creating Application User- roboshop.\e[0m" | tee -a ${log}
     useradd roboshop  &>> ${log}
@@ -38,15 +46,6 @@ func_systemd() {
 
 
 func_nodejs(){
-  # We need to setup a service in systemd so systemctl can manage this service.
-  # Setup SystemD $component Service.
-  # Ensure you replace <MONGODB-SERVER-IPADDRESS> with IP address
-
-  echo -e "\e[34m-->> Deleting The old service file  /etc/systemd/system/$component.service file.\e[0m" | tee -a ${log}
-  rm -rf /etc/systemd/system/$component.service &>> ${log}
-
-  echo -e "\e[34m-->> Copying The $component.service to /etc/systemd/system/$component.service.\e[0m" | tee -a ${log}
-  cp $component.service /etc/systemd/system/$component.service  &>> ${log}
 
   #Change the hostname
   #hostnamectl set-hostname $component
@@ -102,13 +101,6 @@ func_nodejs(){
 
 
 func_java(){
-  #We need to setup a new service in systemd so systemctl can manage this service
-  # Setup SystemD Shipping Service
-  echo -e "\e[34m-->> Deleting The old service /etc/systemd/system/$component.service file.\e[0m" | tee -a ${log}
-  rm -rf /etc/systemd/system/$component.service  &>> ${log}
-
-  echo -e "\e[34m-->> Copying The $component.service to /etc/systemd/system/$component.service.\e[0m" | tee -a ${log}
-  cp $component.service /etc/systemd/system/$component.service  &>> ${log}
 
   # Change the hostname
   #hostnamectl set-hostname shipping
@@ -145,6 +137,37 @@ func_java(){
   mysql -h mysql.learntechnology.tech -uroot -pRoboShop@1 </app/schema/$component.sql   &>> ${log}
 
   # Calling the function
+  echo -e "\e[34m-->> --->> Calling the func_systemd function.\e[0m" | tee -a ${log}
+  func_systemd
+
+  echo -e "\e[33m-----------Script Run Successfully-----------\e[0m" | tee -a ${log}
+}
+
+
+
+
+func_python(){
+  # Change the hostname
+  #hostnamectl set-hostname payment
+  # Put  sleep for 5S so hostname fully propagate before running the next script.
+  #sleep 5
+
+  # Developer has chosen Python, Check with developer which version of Python is needed.
+  # Install Python 3.6
+  echo -e "\e[34m-->> Installing the Python package.\e[0m" | tee -a ${log}
+  dnf install python36 gcc python3-devel bash-completion -y
+
+  #Calling the function.
+  echo -e "\e[34m-->> Calling the func_appprerequisite function.\e[0m" | tee -a ${log}
+  func_appprerequisite
+
+  # Every application is developed by development team will have some common software's that they use as libraries.
+  # This application also have the same way of defined dependencies in the application configuration.
+  # Lets download the dependencies.
+
+  echo -e "\e[34m-->> Building the $component service.\e[0m" | tee -a ${log}
+  pip3.6 install -r /app/requirements.txt
+
   echo -e "\e[34m-->> --->> Calling the func_systemd function.\e[0m" | tee -a ${log}
   func_systemd
 
