@@ -104,7 +104,7 @@ func_nodejs(){
 func_java(){
   #We need to setup a new service in systemd so systemctl can manage this service
   # Setup SystemD Shipping Service
-  echo -e "\e[34m-->> Deleting The old service file /etc/systemd/system/$component.service file.\e[0m" | tee -a ${log}
+  echo -e "\e[34m-->> Deleting The old service /etc/systemd/system/$component.service file.\e[0m" | tee -a ${log}
   rm -rf /etc/systemd/system/$component.service  &>> ${log}
 
   echo -e "\e[34m-->> Copying The $component.service to /etc/systemd/system/$component.service.\e[0m" | tee -a ${log}
