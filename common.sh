@@ -173,3 +173,33 @@ func_python(){
 
   echo -e "\e[33m-----------Script Run Successfully-----------\e[0m" | tee -a ${log}
 }
+
+
+
+func_golang(){
+
+  #Developer has chosen GoLang, Check with developer which version of GoLang is needed.
+  #Install GoLang
+  echo -e "\e[34m-->> Installing the golang package.\e[0m" | tee -a ${log}
+  dnf install bash-completion golang -y  &>> ${log}
+
+  #Calling the function.
+  echo -e "\e[34m-->> Calling the func_appprerequisite function.\e[0m" | tee -a ${log}
+  func_appprerequisite
+
+  #Every application is developed by development team will have some common software's that they use as libraries.
+  # This application also have the same way of defined dependencies in the application configuration.
+  #Lets download the dependencies & build the software.
+
+  cd /app  &>> ${log} # From outside we can't run these command so need to navigate to that directory
+  # if first command fail then it will exit || means or operator
+  go mod init dispatch   &>> ${log} #dispatch is the module name we can change it but we have to modify in config file also
+  go get  &>> ${log}
+  go build  &>> ${log}
+
+  echo -e "\e[34m-->> Calling the func_systemd function.\e[0m" | tee -a ${log}
+  func_systemd
+
+  echo -e "\e[33m-----------Script Run Successfully-----------\e[0m" | tee -a ${log}
+}
+}
