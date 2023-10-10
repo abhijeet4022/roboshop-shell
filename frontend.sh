@@ -12,7 +12,7 @@ systemctl start $component
 systemctl enable $component
 
 rm -rf /usr/share/nginx/html/*
-curl -os /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
+curl -s -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
 unzip -o /tmp/frontend.zip -d /usr/share/nginx/html/  &>> ${log}
 
 
