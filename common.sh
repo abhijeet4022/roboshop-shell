@@ -44,7 +44,7 @@ func_systemd() {
 }
 
 
-
+#User & Catalogue Service
 func_nodejs(){
 
   #Change the hostname
@@ -99,13 +99,8 @@ func_nodejs(){
 
 
 
-
+#Shipping Service
 func_java(){
-
-  # Change the hostname
-  #hostnamectl set-hostname shipping
-  # Put  sleep for 5S so hostname fully propagate before running the next script.
-  # sleep 5
 
   #Shipping service is responsible for finding the distance of the package to be shipped and calculate the price based on that.
   #Shipping service is written in Java, Hence we need to install Java.
@@ -145,12 +140,8 @@ func_java(){
 
 
 
-
+#Payment Service
 func_python(){
-  # Change the hostname
-  #hostnamectl set-hostname payment
-  # Put  sleep for 5S so hostname fully propagate before running the next script.
-  #sleep 5
 
   # Developer has chosen Python, Check with developer which version of Python is needed.
   # Install Python 3.6
@@ -175,7 +166,7 @@ func_python(){
 }
 
 
-
+#Dispatch Service
 func_golang(){
 
   #Developer has chosen GoLang, Check with developer which version of GoLang is needed.
@@ -201,5 +192,4 @@ func_golang(){
   func_systemd
 
   echo -e "\e[33m-----------Script Run Successfully-----------\e[0m" | tee -a ${log}
-}
 }

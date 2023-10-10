@@ -4,5 +4,5 @@ component=dispatch
 #Linked/Export with Source file.
 source common.sh
 
-#this is call the nodejs function from common.sh file.
+#this will call the func_golang function from common.sh file.
 func_golang
