@@ -5,4 +5,4 @@ component=user
 source common.sh
 
 #this is call the nodejs function from common.sh file.
-nodejs
+func_nodejs
