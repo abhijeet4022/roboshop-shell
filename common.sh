@@ -20,7 +20,6 @@ func_appprerequisite(){
 
 
 
-
 func_systemd() {
     # Load the service.
     #This command is because we added a new service, We are telling systemd to reload so it will detect new service.
@@ -29,8 +28,9 @@ func_systemd() {
 
     # Start & Enable the service.
     systemctl enable $component  &>> ${log}
-    systemctl start $component  &>> ${log}
+    systemctl restart $component  &>> ${log}
 }
+
 
 
 func_nodejs(){
@@ -112,18 +112,14 @@ func_java(){
 
   dnf install maven bash-completion -y  &>> $(log)
 
-
   #Calling the function.
   func_appprerequisite
-
 
   #Every application is developed by development team will have some common software's that they use as libraries.
   # This application also have the same way of defined dependencies in the application configuration.
   #Lets download the dependencies & build the application
   mvn clean package -f /app/pom.xml  &>> $(log)
   mv /app/target/$component-1.0.jar /app/$component.jar  &>> $(log)
-
-
 
 
   # For this application to work fully functional we need to load schema to the Database.
