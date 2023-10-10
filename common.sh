@@ -117,7 +117,7 @@ func_java(){
 
   #Shipping service is responsible for finding the distance of the package to be shipped and calculate the price based on that.
   #Shipping service is written in Java, Hence we need to install Java.
-  #Maven is a build or Java Packaging software, Hence we are going to install maven, This indeed takes care of java installation.
+  #Maven is a build or Java Packaging software, Hence we are going to install maven.
   #Developer has chosen Maven, Check with developer which version of Maven is needed. Here for our requirement java >= 1.8 & maven >=3.5 should work.
 
   echo -e "\e[34m--->> Installing the MAVAN package.\e[0m" | tee -a ${log}
