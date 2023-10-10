@@ -155,7 +155,7 @@ func_python(){
   # Developer has chosen Python, Check with developer which version of Python is needed.
   # Install Python 3.6
   echo -e "\e[34m-->> Installing the Python package.\e[0m" | tee -a ${log}
-  dnf install python36 gcc python3-devel bash-completion -y
+  dnf install python36 gcc python3-devel bash-completion -y   &>> ${log}
 
   #Calling the function.
   echo -e "\e[34m-->> Calling the func_appprerequisite function.\e[0m" | tee -a ${log}
@@ -166,7 +166,7 @@ func_python(){
   # Lets download the dependencies.
 
   echo -e "\e[34m-->> Building the $component service.\e[0m" | tee -a ${log}
-  pip3.6 install -r /app/requirements.txt
+  pip3.6 install -r /app/requirements.txt &>> ${log}
 
   echo -e "\e[34m-->> --->> Calling the func_systemd function.\e[0m" | tee -a ${log}
   func_systemd
