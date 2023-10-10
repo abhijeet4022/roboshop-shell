@@ -137,7 +137,7 @@ func_java(){
   mysql -h mysql.learntechnology.tech -uroot -pRoboShop@1 </app/schema/$component.sql   &>> ${log}
 
   # Calling the function
-  echo -e "\e[34m-->> --->> Calling the func_systemd function.\e[0m" | tee -a ${log}
+  echo -e "\e[34m-->> Calling the func_systemd function.\e[0m" | tee -a ${log}
   func_systemd
 
   echo -e "\e[33m-----------Script Run Successfully-----------\e[0m" | tee -a ${log}
@@ -168,7 +168,7 @@ func_python(){
   echo -e "\e[34m-->> Building the $component service.\e[0m" | tee -a ${log}
   pip3.6 install -r /app/requirements.txt &>> ${log}
 
-  echo -e "\e[34m-->> --->> Calling the func_systemd function.\e[0m" | tee -a ${log}
+  echo -e "\e[34m-->> Calling the func_systemd function.\e[0m" | tee -a ${log}
   func_systemd
 
   echo -e "\e[33m-----------Script Run Successfully-----------\e[0m" | tee -a ${log}
