@@ -148,5 +148,5 @@ func_java(){
   echo -e "\e[34mCalling the func_systemd function.\e[0m" | tee -a ${log}
   func_systemd
 
-  echo -e "\e[33m-----------Script Run Successfully-----------\e[0m"
+  echo -e "\e[33m-----------Script Run Successfully-----------\e[0m" | tee -a ${log}
 }
