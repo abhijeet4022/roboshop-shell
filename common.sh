@@ -118,7 +118,7 @@ func_nodejs(){
   func_exit_status
 
   # Calling the function
-  echo -e "\e[35m**** Calling  Calling the func_appprerequisite function.****\e[0m" | tee -a ${log}
+  echo -e "\e[35m**** Calling the func_appprerequisite function.****\e[0m" | tee -a ${log}
   func_appprerequisite
 
 
@@ -130,7 +130,7 @@ func_nodejs(){
   func_exit_status
 
   # Calling the function
-  echo -e "\e[35m**** Calling  Calling the func_schema_setup function to setup mongodb.****\e[0m" | tee -a ${log}
+  echo -e "\e[35m**** Calling the func_schema_setup function to setup mongodb.****\e[0m" | tee -a ${log}
   func_schema_setup
 
 
@@ -161,7 +161,7 @@ func_java(){
   func_exit_status
 
   #Calling the function.
-  echo -e "\e[35m**** Calling  Calling the func_appprerequisite function.****\e[0m" | tee -a ${log}
+  echo -e "\e[35m**** Calling the func_appprerequisite function.****\e[0m" | tee -a ${log}
   func_appprerequisite
 
 
@@ -174,7 +174,7 @@ func_java(){
   func_exit_status
 
   # Calling the function
-  echo -e "\e[35m**** Calling  Calling the func_schema_setup function to setup MYSQL.****\e[0m" | tee -a ${log}
+  echo -e "\e[35m**** Calling the func_schema_setup function to setup MYSQL.****\e[0m" | tee -a ${log}
   func_schema_setup
 
 
@@ -198,7 +198,7 @@ func_python(){
   func_exit_status
 
   #Calling the function.
-  echo -e "\e[35m**** Calling  Calling the func_appprerequisite function.****\e[0m" | tee -a ${log}
+  echo -e "\e[35m**** Calling the func_appprerequisite function.****\e[0m" | tee -a ${log}
   func_appprerequisite
 
 
@@ -228,7 +228,7 @@ func_golang(){
   func_exit_status
 
   #Calling the function.
-  echo -e "\e[35m**** Calling  Calling the func_appprerequisite function.****\e[0m" | tee -a ${log}
+  echo -e "\e[35m**** Calling the func_appprerequisite function.****\e[0m" | tee -a ${log}
   func_appprerequisite
   func_exit_status
 
