@@ -77,7 +77,7 @@ func_schema_setup(){
 }
 
 
-#User & Catalogue Service
+#Catalogue, User & Cart Service
 func_nodejs(){
 
   #Change the hostname
