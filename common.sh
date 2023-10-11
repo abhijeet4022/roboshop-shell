@@ -142,7 +142,6 @@ func_nodejs(){
   # Calling the function
   echo -e "\e[35m**** Calling the func_systemd function.****\e[0m" | tee -a ${log}
   func_systemd
-  func_exit_status
 
   echo -e "\e[33m-----------Script Run Successfully-----------\e[0m" | tee -a ${log}
 }
@@ -182,7 +181,7 @@ func_java(){
   # Calling the function
   echo -e "\e[35m**** Calling the func_systemd function.****\e[0m" | tee -a ${log}
   func_systemd
-  func_exit_status
+
 
   echo -e "\e[33m-----------Script Run Successfully-----------\e[0m" | tee -a ${log}
 }
@@ -213,7 +212,7 @@ func_python(){
 
   echo -e "\e[35m**** Calling the func_systemd function.****\e[0m" | tee -a ${log}
   func_systemd
-  func_exit_status
+
 
   echo -e "\e[33m-----------Script Run Successfully-----------\e[0m" | tee -a ${log}
 }
@@ -246,7 +245,7 @@ func_golang(){
 
   echo -e "\e[35m**** Calling the func_systemd function.****\e[0m" | tee -a ${log}
   func_systemd
-  func_exit_status
+
 
   echo -e "\e[33m-----------Script Run Successfully-----------\e[0m" | tee -a ${log}
 }
