@@ -118,7 +118,7 @@ func_nodejs(){
 
 
   # Calling the function
-  echo -e "\e[35m**** Calling  Calling the func_systemd function.****\e[0m" | tee -a ${log}
+  echo -e "\e[35m**** Calling the func_systemd function.****\e[0m" | tee -a ${log}
   func_systemd
 
   echo -e "\e[33m-----------Script Run Successfully---****\e[0m" | tee -a ${log}
@@ -153,7 +153,7 @@ func_java(){
   func_schema_setup
 
   # Calling the function
-  echo -e "\e[35m**** Calling  Calling the func_systemd function.****\e[0m" | tee -a ${log}
+  echo -e "\e[35m**** Calling the func_systemd function.****\e[0m" | tee -a ${log}
   func_systemd
 
   echo -e "\e[33m-----------Script Run Successfully---****\e[0m" | tee -a ${log}
@@ -180,7 +180,7 @@ func_python(){
   echo -e "\e[34m-->> Building the $component service.\e[0m" | tee -a ${log}
   pip3.6 install -r /app/requirements.txt &>> ${log}
 
-  echo -e "\e[35m**** Calling  Calling the func_systemd function.****\e[0m" | tee -a ${log}
+  echo -e "\e[35m**** Calling the func_systemd function.****\e[0m" | tee -a ${log}
   func_systemd
 
   echo -e "\e[33m-----------Script Run Successfully---****\e[0m" | tee -a ${log}
@@ -209,7 +209,7 @@ func_golang(){
   go get  &>> ${log}
   go build  &>> ${log}
 
-  echo -e "\e[35m**** Calling  Calling the func_systemd function.****\e[0m" | tee -a ${log}
+  echo -e "\e[35m**** Calling the func_systemd function.****\e[0m" | tee -a ${log}
   func_systemd
 
   echo -e "\e[33m-----------Script Run Successfully---****\e[0m" | tee -a ${log}
