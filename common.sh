@@ -21,7 +21,7 @@ func_appprerequisite(){
 
     # Add application user
     echo -e "\e[34m-->> Creating Application User- roboshop.\e[0m" | tee -a ${log}
-    id roboshop  ${log}
+    id roboshop  &>> ${log}
     if [ $? -ne 0 ]; then
     useradd roboshop  &>> ${log}
     fi
