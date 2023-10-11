@@ -120,7 +120,7 @@ func_nodejs(){
   # Calling the function
   echo -e "\e[35m**** Calling  Calling the func_appprerequisite function.****\e[0m" | tee -a ${log}
   func_appprerequisite
-  func_exit_status
+
 
 
   # Every application is developed by development team will have some common software's that they use as libraries. This application also have the same way of defined dependencies in the application configuration.
@@ -132,7 +132,7 @@ func_nodejs(){
   # Calling the function
   echo -e "\e[35m**** Calling  Calling the func_schema_setup function to setup mongodb.****\e[0m" | tee -a ${log}
   func_schema_setup
-  func_exit_status
+
 
   #Need to update catalogue server ip address in frontend configuration.
   # Configuration file is /etc/nginx/default.d/roboshop.conf
@@ -163,7 +163,7 @@ func_java(){
   #Calling the function.
   echo -e "\e[35m**** Calling  Calling the func_appprerequisite function.****\e[0m" | tee -a ${log}
   func_appprerequisite
-  func_exit_status
+
 
   #Every application is developed by development team will have some common software's that they use as libraries.
   # This application also have the same way of defined dependencies in the application configuration.
@@ -176,7 +176,7 @@ func_java(){
   # Calling the function
   echo -e "\e[35m**** Calling  Calling the func_schema_setup function to setup MYSQL.****\e[0m" | tee -a ${log}
   func_schema_setup
-  func_exit_status
+
 
   # Calling the function
   echo -e "\e[35m**** Calling the func_systemd function.****\e[0m" | tee -a ${log}
@@ -200,7 +200,7 @@ func_python(){
   #Calling the function.
   echo -e "\e[35m**** Calling  Calling the func_appprerequisite function.****\e[0m" | tee -a ${log}
   func_appprerequisite
-  func_exit_status
+
 
   # Every application is developed by development team will have some common software's that they use as libraries.
   # This application also have the same way of defined dependencies in the application configuration.
