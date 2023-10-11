@@ -28,6 +28,8 @@ func_appprerequisite(){
 
     echo -e "\e[34m-->> Extracting the Application code.\e[0m" | tee -a ${log}
     unzip -o /tmp/$component.zip -d /app/ &>> ${log}
+
+    echo -e "\e[35m**** func_appprerequisite Function Completed****\e[0m" | tee -a ${log}
 }
 
 
@@ -41,6 +43,8 @@ func_systemd() {
     # Start & Enable the service.
     systemctl enable $component  &>> ${log}
     systemctl restart $component  &>> ${log}
+
+    echo -e "\e[35m**** func_systemd Function Completed****\e[0m" | tee -a ${log}
 }
 
 
@@ -74,6 +78,8 @@ func_schema_setup(){
   mysql -h mysql.learntechnology.tech -uroot -pRoboShop@1 </app/schema/$component.sql   &>> ${log}
 
   fi
+
+  echo -e "\e[35m**** func_schema_setup Function Completed****\e[0m" | tee -a ${log}
 }
 
 
@@ -93,7 +99,7 @@ func_nodejs(){
   yum install -y bash-completion nodejs  &>> ${log}
 
   # Calling the function
-  echo -e "\e[35m-------- Calling the func_appprerequisite function.--------\e[0m" | tee -a ${log}
+  echo -e "\e[35m**** Calling  Calling the func_appprerequisite function.****\e[0m" | tee -a ${log}
   func_appprerequisite
 
 
@@ -103,7 +109,7 @@ func_nodejs(){
   npm install -C /app/  &>> ${log} # We can install dependency without navigate to that directory.
 
   # Calling the function
-  echo -e "\e[35m-------- Calling the func_schema_setup function to setup mongodb.--------\e[0m" | tee -a ${log}
+  echo -e "\e[35m**** Calling  Calling the func_schema_setup function to setup mongodb.****\e[0m" | tee -a ${log}
   func_schema_setup
 
   #Need to update catalogue server ip address in frontend configuration.
@@ -112,10 +118,10 @@ func_nodejs(){
 
 
   # Calling the function
-  echo -e "\e[35m-------- Calling the func_systemd function.--------\e[0m" | tee -a ${log}
+  echo -e "\e[35m**** Calling  Calling the func_systemd function.****\e[0m" | tee -a ${log}
   func_systemd
 
-  echo -e "\e[33m-----------Script Run Successfully-----------\e[0m" | tee -a ${log}
+  echo -e "\e[33m-----------Script Run Successfully---****\e[0m" | tee -a ${log}
 }
 
 
@@ -132,7 +138,7 @@ func_java(){
   dnf install maven bash-completion -y  &>> ${log}
 
   #Calling the function.
-  echo -e "\e[35m-------- Calling the func_appprerequisite function.--------\e[0m" | tee -a ${log}
+  echo -e "\e[35m**** Calling  Calling the func_appprerequisite function.****\e[0m" | tee -a ${log}
   func_appprerequisite
 
   #Every application is developed by development team will have some common software's that they use as libraries.
@@ -143,14 +149,14 @@ func_java(){
   mv /app/target/$component-1.0.jar /app/$component.jar  &>> ${log}
 
   # Calling the function
-  echo -e "\e[35m-------- Calling the func_schema_setup function to setup MYSQL.--------\e[0m" | tee -a ${log}
+  echo -e "\e[35m**** Calling  Calling the func_schema_setup function to setup MYSQL.****\e[0m" | tee -a ${log}
   func_schema_setup
 
   # Calling the function
-  echo -e "\e[35m-------- Calling the func_systemd function.--------\e[0m" | tee -a ${log}
+  echo -e "\e[35m**** Calling  Calling the func_systemd function.****\e[0m" | tee -a ${log}
   func_systemd
 
-  echo -e "\e[33m-----------Script Run Successfully-----------\e[0m" | tee -a ${log}
+  echo -e "\e[33m-----------Script Run Successfully---****\e[0m" | tee -a ${log}
 }
 
 
@@ -164,7 +170,7 @@ func_python(){
   dnf install python36 gcc python3-devel bash-completion -y   &>> ${log}
 
   #Calling the function.
-  echo -e "\e[35m-------- Calling the func_appprerequisite function.--------\e[0m" | tee -a ${log}
+  echo -e "\e[35m**** Calling  Calling the func_appprerequisite function.****\e[0m" | tee -a ${log}
   func_appprerequisite
 
   # Every application is developed by development team will have some common software's that they use as libraries.
@@ -174,10 +180,10 @@ func_python(){
   echo -e "\e[34m-->> Building the $component service.\e[0m" | tee -a ${log}
   pip3.6 install -r /app/requirements.txt &>> ${log}
 
-  echo -e "\e[35m-------- Calling the func_systemd function.--------\e[0m" | tee -a ${log}
+  echo -e "\e[35m**** Calling  Calling the func_systemd function.****\e[0m" | tee -a ${log}
   func_systemd
 
-  echo -e "\e[33m-----------Script Run Successfully-----------\e[0m" | tee -a ${log}
+  echo -e "\e[33m-----------Script Run Successfully---****\e[0m" | tee -a ${log}
 }
 
 
@@ -190,7 +196,7 @@ func_golang(){
   dnf install bash-completion golang -y  &>> ${log}
 
   #Calling the function.
-  echo -e "\e[35m-------- Calling the func_appprerequisite function.--------\e[0m" | tee -a ${log}
+  echo -e "\e[35m**** Calling  Calling the func_appprerequisite function.****\e[0m" | tee -a ${log}
   func_appprerequisite
 
   #Every application is developed by development team will have some common software's that they use as libraries.
@@ -203,8 +209,8 @@ func_golang(){
   go get  &>> ${log}
   go build  &>> ${log}
 
-  echo -e "\e[35m-------- Calling the func_systemd function.--------\e[0m" | tee -a ${log}
+  echo -e "\e[35m**** Calling  Calling the func_systemd function.****\e[0m" | tee -a ${log}
   func_systemd
 
-  echo -e "\e[33m-----------Script Run Successfully-----------\e[0m" | tee -a ${log}
+  echo -e "\e[33m-----------Script Run Successfully---****\e[0m" | tee -a ${log}
 }
