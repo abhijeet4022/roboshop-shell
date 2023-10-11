@@ -1,5 +1,6 @@
 #Declareing the variable.
 component=shipping
+schema_type=mysql
 
 #Linked/Export with Source file.
 source common.sh

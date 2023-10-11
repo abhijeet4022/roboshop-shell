@@ -44,6 +44,39 @@ func_systemd() {
 }
 
 
+
+
+func_schema_setup(){
+   #For the application to work fully functional we need to load schema to the Database.
+   #Schemas will push the user information and application data to the database
+
+  if [ "${schema_type}" == "mongodb" ]; then
+
+  echo -e "\e[34m-->> Configuring the repo for mongodb.\e[0m" | tee -a ${log}
+  cp mongo.repo /etc/yum.repos.d/mongo.repo  &>> ${log}
+
+  echo -e "\e[34m-->> Installing the mongodb-org-shell package.\e[0m" | tee -a ${log}
+  dnf install mongodb-org-shell -y  &>> ${log}
+
+  #Load Schema
+  echo -e "\e[34m-->> Loading the mongodb schema.\e[0m" | tee -a ${log}
+  mongo --host mongodb.learntechnology.tech </app/schema/$component.js  &>> ${log}
+
+  fi
+
+
+  if [ "${schema_type}" == "mysql" ]; then
+
+  echo -e "\e[34m-->> Installing the MYSQL client.\e[0m" | tee -a ${log}
+  dnf install mysql -y   &>> ${log}
+
+  echo -e "\e[34m-->> Loading the schema.\e[0m" | tee -a ${log}
+  mysql -h mysql.learntechnology.tech -uroot -pRoboShop@1 </app/schema/$component.sql   &>> ${log}
+
+  fi
+}
+
+
 #User & Catalogue Service
 func_nodejs(){
 
@@ -69,23 +102,11 @@ func_nodejs(){
   echo -e "\e[34m-->> Installing the dependencies for the Application- /app/package.json.\e[0m" | tee -a ${log}
   npm install -C /app/  &>> ${log} # We can install dependency without navigate to that directory.
 
+  # Calling the function
+  echo -e "\e[34m-->> Calling the func_schema_setup function to setup mongodb.\e[0m" | tee -a ${log}
+  func_schema_setup
 
-  #For the application to work fully functional we need to load schema to the Database.
-  #Schemas are usually part of application code and developer will provide them as part of development.
-  #We need to load the schema. To load schema we need to install mongodb client.
-  #To have it installed we can setup MongoDB repo and install mongodb-client.
-
-  echo -e "\e[34m-->> Configuring the repo for mongodb.\e[0m" | tee -a ${log}
-  cp mongo.repo /etc/yum.repos.d/mongo.repo  &>> ${log}
-
-  echo -e "\e[34m-->> Installing the mongodb-org-shell package.\e[0m" | tee -a ${log}
-  dnf install mongodb-org-shell -y  &>> ${log}
-
-  #Load Schema
-  echo -e "\e[34m-->> Loading the mongodb schema.\e[0m" | tee -a ${log}
-  mongo --host mongodb.learntechnology.tech </app/schema/$component.js  &>> ${log}
-
-  #Need to update $component server ip address in frontend configuration.
+  #Need to update catalogue server ip address in frontend configuration.
   # Configuration file is /etc/nginx/default.d/roboshop.conf
 
 
@@ -121,15 +142,14 @@ func_java(){
   mvn clean package -f /app/pom.xml  &>> ${log}
   mv /app/target/$component-1.0.jar /app/$component.jar  &>> ${log}
 
+  # Calling the function
+  echo -e "\e[34m-->> Calling the func_schema_setup function to setup MYSQL.\e[0m" | tee -a ${log}
+  func_schema_setup
 
-  # For this application to work fully functional we need to load schema to the Database.
-  # To load schema we need to install mysql client.
-  # To have it installed we can use
-  echo -e "\e[34m-->> Installing the MYSQL client.\e[0m" | tee -a ${log}
-  dnf install mysql -y   &>> ${log}
 
-  echo -e "\e[34m-->> Loading the schema.\e[0m" | tee -a ${log}
-  mysql -h mysql.learntechnology.tech -uroot -pRoboShop@1 </app/schema/$component.sql   &>> ${log}
+
+
+
 
   # Calling the function
   echo -e "\e[34m-->> Calling the func_systemd function.\e[0m" | tee -a ${log}

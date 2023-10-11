@@ -1,5 +1,6 @@
 #Declareing the variable.
 component=catalogue
+schema_type=mongodb
 
 #Linked/Export with Source file.
 source common.sh
