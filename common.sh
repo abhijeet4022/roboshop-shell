@@ -21,7 +21,10 @@ func_appprerequisite(){
 
     # Add application user
     echo -e "\e[34m-->> Creating Application User- roboshop.\e[0m" | tee -a ${log}
+    id roboshop  ${log}
+    if [ $? -ne 0 ]; then
     useradd roboshop  &>> ${log}
+    fi
     func_exit_status
 
     # Setup an app directory.
@@ -53,8 +56,6 @@ func_systemd() {
     #This command is because we added a new service, We are telling systemd to reload so it will detect new service.
     echo -e "\e[34m-->> Starting & Enabling the $component service.\e[0m" | tee -a ${log}
     systemctl daemon-reload  &>> ${log}
-    func_exit_status
-
     # Start & Enable the service.
     systemctl enable $component  &>> ${log}
     systemctl restart $component  &>> ${log}
@@ -106,11 +107,6 @@ func_schema_setup(){
 
 #Catalogue, User & Cart Service
 func_nodejs(){
-
-  #Change the hostname
-  #hostnamectl set-hostname $component
-  #Put  sleep for 5S so hostname fully propagate before running the next script.
-  #sleep 5
 
   # Configuring repo to download nodejs NodeJS>=18
   echo -e "\e[34m-->> Configuring the repo for NodeJS.\e[0m" | tee -a ${log}
