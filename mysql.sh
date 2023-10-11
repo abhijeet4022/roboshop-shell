@@ -18,6 +18,7 @@ systemctl enable mysqld
 systemctl restart mysqld
 
 # We need to change the default root password in order to start using the database service. Use password RoboShop@1 or any other as per your choice.
+#Password = RoboShop@1
 mysql_secure_installation --set-root-pass ${mysql_root_password}
 
-echo "-----------Script Run Successfully-----------"
+echo -e "\e[34m-----------Script Run Successfully-----------\e[0m"
