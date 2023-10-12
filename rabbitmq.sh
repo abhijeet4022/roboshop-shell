@@ -23,7 +23,7 @@ dnf install rabbitmq-server bash-completion -y  &>> ${log}
 func_exit_status
 
 # Start RabbitMQ Service
-echo -e "\e[34m-->> Starting & Enabling the rabbitmq-server service . \e[0m" | tee -a ${log}
+echo -e "\e[34m-->> Starting & Enabling the rabbitmq-server service. \e[0m" | tee -a ${log}
 systemctl enable rabbitmq-server  &>> ${log}
 systemctl restart rabbitmq-server  &>> ${log}
 func_exit_status
@@ -35,4 +35,4 @@ rabbitmqctl add_user roboshop ${rabbitmq_appuser_password}  &>> ${log}
 rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"   &>> ${log}
 func_exit_status
 
-echo "-----------Script Run Successfully-----------"
+echo -e "\e[34m-----------Script Run Successfully-----------\e[0m"
