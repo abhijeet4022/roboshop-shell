@@ -27,7 +27,7 @@ echo -e "\e[34m-->> Extracting the  Web-Server content.\e[0m" | tee -a ${log}
 unzip -o /tmp/frontend.zip -d /usr/share/nginx/html/  &>> ${log}
 func_exit_status
 
-echo -e "\e[34m-->> Starting & Enabling the $component service \e[0m\n" | tee -a ${log}
+echo -e "\e[34m-->> Starting & Enabling the $component service \e[0m" | tee -a ${log}
 systemctl daemon-reload  &>> ${log}
 systemctl enable nginx-autorestart.service &>> ${log}
 systemctl restart $component &>> ${log}
