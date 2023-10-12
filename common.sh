@@ -201,7 +201,7 @@ func_python(){
   echo -e "\e[35m**** Calling the func_appprerequisite function.****\e[0m" | tee -a ${log}
   func_appprerequisite
 
-  sed -i "s/rabbitmq_appuser_password/${rabbitmq_appuser_password}/" /etc/systemd/system/$component.service
+  sed -i "s/rabbitmq_appuser_password/${rabbitmq_appuser_password}/" /etc/systemd/system/${component}.service
 
 
   # Every application is developed by development team will have some common software's that they use as libraries.
