@@ -1,6 +1,6 @@
 rabbitmq_appuser_password=$1
 if [ -z "${rabbitmq_appuser_password}" ]; then
-  echo "\e[31mPlease mention the password for RabbitMQ.\e[0m"
+  echo "\e[31mPlease: mention the password for RabbitMQ.\e[0m"
   exit 1
 fi
 

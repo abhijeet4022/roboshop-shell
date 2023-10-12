@@ -1,6 +1,6 @@
 mysql_root_password=$1
 if [ -z "${mysql_root_password}" ]; then
-  echo -e "\e[31mInput Please mention the password for MYSQL.\e[0m"
+  echo -e "\e[31mInput: Please mention the password for MYSQL.\e[0m"
   exit 1
 fi
 # Developer has chosen the database MySQL. Hence, we are trying to install it up and configure it.
