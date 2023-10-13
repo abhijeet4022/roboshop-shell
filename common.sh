@@ -72,32 +72,32 @@ func_schema_setup(){
    #Schemas will push the user information and application data to the database
 
   if [ "${schema_type}" == "mongodb" ]; then
+    echo -e "\e[34m-->> Configuring the repo for mongodb.\e[0m" | tee -a ${log}
+    cp mongo.repo /etc/yum.repos.d/mongo.repo  &>> ${log}
+    func_exit_status
 
-  echo -e "\e[34m-->> Configuring the repo for mongodb.\e[0m" | tee -a ${log}
-  cp mongo.repo /etc/yum.repos.d/mongo.repo  &>> ${log}
-  func_exit_status
-
-  echo -e "\e[34m-->> Installing the mongodb-org-shell package.\e[0m" | tee -a ${log}
-  dnf install mongodb-org-shell -y  &>> ${log}
-  func_exit_status
+    echo -e "\e[34m-->> Installing the mongodb-org-shell package.\e[0m" | tee -a ${log}
+    dnf install mongodb-org-shell -y  &>> ${log}
+    func_exit_status
 
   #Load Schema
-  echo -e "\e[34m-->> Loading the mongodb schema.\e[0m" | tee -a ${log}
-  mongo --host mongodb.learntechnology.tech </app/schema/$component.js  &>> ${log}
-  func_exit_status
+    echo -e "\e[34m-->> Loading the mongodb schema.\e[0m" | tee -a ${log}
+    mongo --host mongodb.learntechnology.tech </app/schema/$component.js  &>> ${log}
+    func_exit_status
 
-  fi
+  elif [ "${schema_type}" == "mysql" ]; then
 
+    echo -e "\e[34m-->> Installing the MYSQL client.\e[0m" | tee -a ${log}
+    dnf install mysql -y   &>> ${log}
+    func_exit_status
 
-  if [ "${schema_type}" == "mysql" ]; then
+    echo -e "\e[34m-->> Loading the schema.\e[0m" | tee -a ${log}
+    mysql -h mysql.learntechnology.tech -uroot -pRoboShop@1 </app/schema/$component.sql   &>> ${log}
+    func_exit_status
 
-  echo -e "\e[34m-->> Installing the MYSQL client.\e[0m" | tee -a ${log}
-  dnf install mysql -y   &>> ${log}
-  func_exit_status
-
-  echo -e "\e[34m-->> Loading the schema.\e[0m" | tee -a ${log}
-  mysql -h mysql.learntechnology.tech -uroot -pRoboShop@1 </app/schema/$component.sql   &>> ${log}
-  func_exit_status
+  else
+    echo -e "\e[34m-->> Schema not required.\e[0m" | tee -a ${log}
+    func_exit_status
 
   fi
 
